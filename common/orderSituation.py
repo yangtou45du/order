@@ -69,7 +69,7 @@ class orderSituation():
              'createdTime': {"$gte": startDateTime,  # 2017/12/22/00/00/00
                              "$lte": EndDateTime}})
         noRefundOrder = 0
-        for order6 in noRefundOrderList:
+        for order6 in                                                       :
             noRefundOrder = noRefundOrder + 1
         severUnServeOrder=noPayOrder+payOrder+noRefundOrder
         print "7天待服务订单：" + str(severUnServeOrder)

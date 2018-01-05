@@ -12,7 +12,7 @@ class login():
         r=requests.post(url,data=dict)
         token = r.json()["resultData"]
         print ("login ok:"+str(r.status_code))
-        print (token)
+        #print (token)
         return token
 
 if __name__=="__main__":
