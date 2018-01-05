@@ -27,6 +27,7 @@ class orderSituation():
         for order1 in orderList:
             sevenOrder=sevenOrder+1
         print "7天订单数："+str(sevenOrder)
+        
 
         noEvaluateOrderList = order.find({"status":2,"documentState": 1, "storeId": "586a1a0267907f3c72bf6c27",#待评价订单数
                                 'createdTime': {"$gte": startDateTime,  # 2017/12/22/00/00/00
@@ -83,7 +84,7 @@ class orderSituation():
         sevenIncome=gaiKuang().homePage(startDateTime,EndDateTime)[3]
         print "7天收入："+str(sevenIncome)
 
-
+        
 
 
 
