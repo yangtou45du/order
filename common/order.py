@@ -4,6 +4,7 @@ import json
 import requests
 from login import login
 class countAllOrder():
+
     def __init__(self):
         #pass
         self.token = login().Login(login_para)
@@ -48,8 +49,7 @@ class countAllOrder():
         order = param['resultData']['content']
         print order
         print len(order)
-        print param
-        #return order
+        return order
 
     def orderListCrOrder(self, dict, login_para):#自驾租车
         url = "http://stg-firm.undunion.com/orange-firm/crOrder/find?"
@@ -60,7 +60,6 @@ class countAllOrder():
         order = param['resultData']['content']
         print order
         print len(order)
-        print param
         return order
     def orderListOrder(self, dict, login_para):#积分
         url = "http://stg-firm.undunion.com/orange-firm/order/find?"
@@ -71,7 +70,6 @@ class countAllOrder():
         order = param['resultData']['content']
         print order
         print len(order)
-        print param
         return order
     def orderListGoodsOrder(self, dict, login_para):#连接小店
         url = "http://stg-firm.undunion.com/orange-firm/goodsOrder/find?"
@@ -82,7 +80,6 @@ class countAllOrder():
         order = param['resultData']['content']
         print order
         print len(order)
-        print param
         return order
 
 
