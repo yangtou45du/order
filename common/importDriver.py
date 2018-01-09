@@ -11,6 +11,7 @@ from xlrd import *
 from xlutils.copy import copy
 import json
 import time
+import base64 
 class importDriver():
     def __init__(self):
         dict={"username":"13730687504","password":"123456"}
@@ -97,9 +98,7 @@ class importDriver():
                 deleurl="http://stg-firm.ichengke.cn/orange-firm/driverOffShelf/"+str(phoneID)+"/delete"
                 deleDriver=requests.post(deleurl,headers=self.header)
                 if deleDriver.status_code==200:
-                    print("删除司机成功")
-        
-        
+                    print("删除司机成功")               
         os.chdir("D:\\Downloads")
         if os.path.exists(r"D:\\Downloads\\司机.xls"):
             os.remove (r"D:\\Downloads\\司机.xls")        
@@ -112,24 +111,30 @@ class importDriver():
                 table.write(i,j,q)
         file.save("司机.xls")  
         #开始导入司机
+        
         boundary = '----WebKitFormBoundary%s' % hex(int(time.time() * 1000))
+        '''
         data = []
         data.append('--%s' % boundary)               
         data.append('Content-Disposition: form-data; name="file"; filename="司机.xls"')        
         data.append('Content-Type: application/octet-stream') 
         fr=open(r'司机.xls','rb')        
-        #data.append(fr.read())
+        data.append(fr.read())
         fr.close()
         data.append('--%s\r\n' % boundary)
         http_body='\r\n'.join(data) 
         print(http_body)
+        '''
         
-        
-        
+        file={'file':('司机.xls',open(r'司机.xls','rb'),'application/octet-stream')}    
+        #print(file)
+        #file={'file':open(r'D:\Downloads\司机.xls','rb')}       
         # payload={ 'name':"file",'filename':"司机.xls"}
-       # url="http://stg-firm.ichengke.cn/orange-firm/driver/importDriver"
-        #importDriver=requests.post(url,data=payload,headers=header)
-        #print(importDriver.text)
+        url="http://stg-firm.ichengke.cn/orange-firm/driver/importDriver"
+        #importDriver=requests.post(url,data=http_body,headers=self.header)
+        #print(self.header)
+        importDriver=requests.post(url,files=file,headers=self.header)
+        print(importDriver.text)
             
         
 
