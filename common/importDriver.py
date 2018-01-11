@@ -124,17 +124,17 @@ class importDriver():
         data.append('--%s\r\n' % boundary)
         http_body='\r\n'.join(data) 
         print(http_body)
+       
         '''
-        
-        file={'file':('司机.xls',open(r'司机.xls','rb'),'application/octet-stream')}    
-        #print(file)
-        #file={'file':open(r'D:\Downloads\司机.xls','rb')}       
-        # payload={ 'name':"file",'filename':"司机.xls"}
+        #files={'file':('司机.xls',open(r'司机.xls','rb'),'application/octet-stream')}    
         url="http://stg-firm.ichengke.cn/orange-firm/driver/importDriver"
+        files = {'file': open(r'司机.xls','rb')}
         #importDriver=requests.post(url,data=http_body,headers=self.header)
-        #print(self.header)
-        importDriver=requests.post(url,files=file,headers=self.header)
+        #self.header['Content-Type']='multipart/form-data'
+        importDriver=requests.post(url,files=files,headers=self.header)
         print(importDriver.text)
+        
+       
             
         
 
